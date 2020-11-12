@@ -5,11 +5,11 @@ import java.util.Scanner;
 class InterfaceException extends Exception {
 	String message;
 	public InterfaceException(int age) {
-		message= "ÇëÊäÈëÕıÈ·µÄÄêÁä£¨²»µÍÓÚ23Ëê)£º";		
+		message= "è¯·è¾“å…¥æ­£ç¡®çš„å¹´é¾„ï¼ˆä¸ä½äº23å²)ï¼š";		
 	}
 
 	public InterfaceException(double salary) {
-		message="ÔÂ¹¤×Ê²»ÄÜ¸ßÓÚ6000Ôª£¬ÇëÖØĞÂÊäÈë£º";
+		message="æœˆå·¥èµ„ä¸èƒ½é«˜äº6000å…ƒï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 	}
 
 	public String warnMess() {
@@ -20,13 +20,13 @@ class InterfaceException extends Exception {
 class Interface{
 	public static void myException (int age) throws InterfaceException{
 		if(age<=22){
-			throw new InterfaceException(age);//·½·¨’³öÒì³££¬µ¼ÖÂ·½·¨½áÊø
+			throw new InterfaceException(age);//æ–¹æ³•æ‹‹å‡ºå¼‚å¸¸ï¼Œå¯¼è‡´æ–¹æ³•ç»“æŸ
 		}		
 	}
 	
 	public static void my (double salary) throws InterfaceException{
 		if(salary>6000){
-			throw new InterfaceException(salary);//·½·¨’³öÒì³££¬µ¼ÖÂ·½·¨½áÊø
+			throw new InterfaceException(salary);//æ–¹æ³•æ‹‹å‡ºå¼‚å¸¸ï¼Œå¯¼è‡´æ–¹æ³•ç»“æŸ
 		}		
 	}
 }
@@ -34,21 +34,21 @@ class Interface{
 
 public class Main {
 	public static void main(String args[]) throws InterfaceException{
-		// ¶ÔÏóÊµÀı»¯
+		// å¯¹è±¡å®ä¾‹åŒ–
 		Doctor doc = new Doctor();		
 		
-		// ÓÃScannerÀàÊµÏÖÊäÈë
+		// ç”¨Scannerç±»å®ç°è¾“å…¥
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("ĞÕÃû£º");
+		System.out.println("å§“åï¼š");
 		doc.name = sc.next();
 
-		System.out.println("ĞÔ±ğ£º");
+		System.out.println("æ€§åˆ«ï¼š");
 		doc.sex = sc.next();
 		
-		//¶ÔÄêÁäÒì³£²¶»ñ
+		//å¯¹å¹´é¾„å¼‚å¸¸æ•è·
 		try {
-			System.out.println("ÄêÁä£º");		
+			System.out.println("å¹´é¾„ï¼š");		
 			doc.age = sc.nextInt();	
 			Interface.myException(doc.age);
 		}catch(InterfaceException e) {
@@ -56,9 +56,9 @@ public class Main {
 			doc.age = sc.nextInt();			
 		}		
 		
-		//¶ÔÃ¿ÔÂĞ½Ë®Òì³£²¶»ñ
+		//å¯¹æ¯æœˆè–ªæ°´å¼‚å¸¸æ•è·
 		try{
-			System.out.println("Ã¿ÔÂĞ½Ë®£º");
+			System.out.println("æ¯æœˆè–ªæ°´ï¼š");
 			doc.salary = sc.nextDouble();
 			Interface.my(doc.salary);
 		}catch(InterfaceException e){
@@ -66,22 +66,22 @@ public class Main {
 			doc.salary = sc.nextDouble();
 		}
 		
-		System.out.println("Ğè½ÉÄÉÑ§·Ñ£º");
+		System.out.println("éœ€ç¼´çº³å­¦è´¹ï¼š");
 		doc.pay = sc.nextDouble();		
 		
-		double Ysalary = doc.salary * 12;// ÄêÊÕÈë=Ã¿ÔÂĞ½Ë®*12
-		double Sj = Ysalary - doc.pay;// Êµ¼ÊÄêÊÕÈë=ÄêÊÕÈë-Ñ§·Ñ
+		double Ysalary = doc.salary * 12;// å¹´æ”¶å…¥=æ¯æœˆè–ªæ°´*12
+		double Sj = Ysalary - doc.pay;// å®é™…å¹´æ”¶å…¥=å¹´æ”¶å…¥-å­¦è´¹
 		// System.out.println(Sj);
-		double Ns;// ÄêÓ¦ÄÉË°½ğ¶î
+		double Ns;// å¹´åº”çº³ç¨é‡‘é¢
 
 		if (Sj < 3000 * 12) {
-			System.out.println("ÄêÊÕÈëÎª" + Sj + "£¬µÍÓÚ£¨3000£©Ôª£¬²»ĞèÄÉË°£¡");
+			System.out.println("å¹´æ”¶å…¥ä¸º" + Sj + "ï¼Œä½äºï¼ˆ36000ï¼‰å…ƒï¼Œä¸éœ€çº³ç¨ï¼");
 		} else if (Sj >= 3000 * 12 && Sj < 12000 * 12) {
 			Ns = (Sj - 3000 * 12) * 0.1;
-			System.out.println("ÄêÊÕÈëÎª" + Sj + "£¬Ó¦½ÉÄÉ" + Ns + "Ôª¡£");
+			System.out.println("å¹´æ”¶å…¥ä¸º" + Sj + "ï¼Œåº”ç¼´çº³" + Ns + "å…ƒã€‚");
 		} else {
 			Ns = (Sj - 12000 * 12) * 0.2;
-			System.out.println("ÄêÊÕÈëÎª" + Sj + "£¬Ó¦½ÉÄÉ" + Ns + "Ôª¡£");
+			System.out.println("å¹´æ”¶å…¥ä¸º" + Sj + "ï¼Œåº”ç¼´çº³" + Ns + "å…ƒã€‚");
 		}
 		
 	}
